@@ -10,12 +10,13 @@ At the end you can specify the path where you want the file to be saved and give
 
 Pre-requisites
 You need BeautifulSoup, ebooklib, requests packages. If you don't have you can install them using:
+
             pip3 install bs4
             pip3 install ebooklib
             pip3 install requests
             sudo apt-get install python3-lxml
-      
-     in the terminal.
+            
+  in the terminal.
       
 Instructions:
 1.Download the python script and unzip it.
