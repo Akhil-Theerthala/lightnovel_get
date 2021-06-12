@@ -1,8 +1,3 @@
-	#Issue-4: The 'About-Novel' page
-#Issue-5: Proper Introduction.
-#Issue-7: Should optimise the code and make it look neat.
-
-
 import os
 from bs4 import BeautifulSoup as bs
 import requests as req
@@ -15,6 +10,8 @@ book.set_language('en')
 # Novelfull link Dont Change this!!!!
 nf = 'https://novelfull.com'   
 
+t=0
+
 #Geeting the content and passing it to BS4:
 usr_inp = input('Enter the novel link here:')
 ch_num = int(input('How many chapters are there in the novel?'))
@@ -25,8 +22,14 @@ for i in range(1,num_pages+1):
 	if i==1:
 		src = req.get(usr_inp).text
 	elif i >= 2:
-		src = req.get(usr_inp+'?page='+str(i)+'&per-page=50').text    		 ##
+		try:
+			src = req.get(usr_inp+'?page='+str(i)+'&per-page=50').text
+			t+=50
+		except Exception as e:
+			print('Please check the number of chapters...')
+			continue 
 	soup = bs(src, 'lxml')
+
 
 
 	#Getting the links from the url provided:
@@ -48,7 +51,7 @@ for i in range(1,num_pages+1):
 		chap_cont = s.find('div' , class_='chapter-c')	
 
 		 # Creating a chapter
-		c2 = epub.EpubHtml(title=ch_name[k], file_name=ch_name[k]+'.xhtml', lang='hr')
+		c2 = epub.EpubHtml(title=ch_name[k], file_name='Chapter'+ str(k+t) +'.xhtml', lang='hr')
 		c2.content = chap_cont.encode("utf-8")
 		book.add_item(c2)
 
@@ -56,7 +59,7 @@ for i in range(1,num_pages+1):
 		book.toc.append(c2)
 		# Add to book ordering
 		book.spine.append(c2)			          
-
+ 
 		print("Added",ch_name[k])
  
 # Add Navigation Files
