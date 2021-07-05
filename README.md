@@ -1,7 +1,7 @@
-# novelfull_get
+# Lightnovel_get
 Creating an epub file by downloading the novel from novelfull
 
-You can download any of the novel available on www.novelfull.com by using this code.
+Currently you can download from Wuxiaworld, Novelfull, Additional sites will be added soon...
 
 The code only copies the novels and not the info about it.
 
