@@ -13,21 +13,21 @@ nf = 'https://novelfull.com'
 t=0
 
 #Geeting the content and passing it to BS4:
-usr_inp = input('Enter the novel link here:')
-ch_num = int(input('How many chapters are there in the novel?'))
-num_pages = int(ch_num / 50) +1
+nov_name = input('Enter the name of the novel here:(Example:Everyone else is a returnee)').casefold().replace(' ','-')  #check the readme for clarity
+usr_inp = nf + '/' + nov_name + '.html'
+try:
+	temp_src =  req.get(usr_inp).text
+	s1 = bs(temp_src, 'lxml')
+	lastpage_get = s1.find('li', class_='last').a.attrs['href'].split('?')[-1].split('&')[0].split('=')[-1]
+	num_pages= int(lastpage_get)
+except:
+	print('The novel is either not available at Novelfull or the name entered is incorrect')
+	quit()
 
 #The start of the main code:
 for i in range(1,num_pages+1):
-	if i==1:
-		src = req.get(usr_inp).text
-	elif i >= 2:
-		try:
-			src = req.get(usr_inp+'?page='+str(i)+'&per-page=50').text
-			t+=50
-		except Exception as e:
-			print('Please check the number of chapters...')
-			continue 
+	src = req.get(usr_inp+'?page='+str(i)+'&per-page=50').text
+	t+=50
 	soup = bs(src, 'lxml')
 
 
@@ -51,7 +51,7 @@ for i in range(1,num_pages+1):
 		chap_cont = s.find('div' , class_='chapter-c')	
 
 		 # Creating a chapter
-		c2 = epub.EpubHtml(title=ch_name[k], file_name='Chapter'+ str(k+t) +'.xhtml', lang='hr')
+		c2 = epub.EpubHtml(title=ch_name[k], file_name='Chapter '+ str(k+t) +'.xhtml', lang='hr')
 		c2.content = chap_cont.encode("utf-8")
 		book.add_item(c2)
 
@@ -86,5 +86,3 @@ epub.write_epub(saveLocation, book, {})
 
 # Location File Got Saved
 print('Saved at', pathToLocation, 'as' , Fname)
-
-#font-family:Roboto, Roboto 400, serif; 
