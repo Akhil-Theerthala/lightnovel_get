@@ -33,6 +33,5 @@ Instructions:
  
  
  Screenshots:
- 
-![image](https://user-images.githubusercontent.com/85566221/121203109-7abebb80-c893-11eb-85e9-a32611169e91.png)
-![image](https://user-images.githubusercontent.com/85566221/121202989-5cf15680-c893-11eb-93ee-9332d20081d2.png)
+ ![image](https://user-images.githubusercontent.com/85566221/124462607-837db100-ddaf-11eb-8808-eee06115092c.png)
+ ![image](https://user-images.githubusercontent.com/85566221/121202989-5cf15680-c893-11eb-93ee-9332d20081d2.png)
