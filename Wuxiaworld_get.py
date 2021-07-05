@@ -14,13 +14,11 @@ print('\n NOTE!!!!\n The completed novels cannot be scraped...\n')
 
 #novel link
 
-
-usr_inp = input('Enter the link of the novel you want to scrape:')
-
+nov_name = input('Enter the name of the novel you want to scrape').casefold().replace(' ','-')
+usr_inp = ww+ '/novel/'+ nov_name
+print(usr_inp)
 #Passing to BS4
 src = req.get(usr_inp, headers = hdr)
-# We use headers as the site organises depending on the 
-
 soup = bs(src.text, 'lxml')
 
 
