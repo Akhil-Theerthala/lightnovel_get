@@ -14,7 +14,7 @@ print('\n NOTE!!!!\n The completed novels cannot be scraped...\n')
 
 #novel link
 
-nov_name = input('Enter the name of the novel you want to scrape').casefold().replace(' ','-')
+nov_name = input('Enter the name of the novel you want to scrape:   ').casefold().replace(' ','-')
 usr_inp = ww+ '/novel/'+ nov_name
 print(usr_inp)
 #Passing to BS4
