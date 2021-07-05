@@ -8,16 +8,17 @@ book = epub.EpubBook()
 book.set_language('en')
 
 # Novelfull link Dont Change this!!!!
-nf = 'https://novelfull.com'   
+nf = 'https://novelfull.com'
+headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}   
 
 t=0
 
 #Geeting the content and passing it to BS4:
-nov_name = input('Enter the name of the novel here:(Example:Everyone else is a returnee)').casefold().replace(' ','-')  #check the readme for clarity
+nov_name = input('Enter the name of the novel here: \n (Example:Everyone else is a returnee) \t').casefold().replace(' ','-')  #check the readme for clarity
 usr_inp = nf + '/' + nov_name + '.html'
 try:
-	temp_src =  req.get(usr_inp).text
-	s1 = bs(temp_src, 'lxml')
+	temp_src =  req.get(usr_inp, headers = headers)
+	s1 = bs(temp_src.text, 'lxml')
 	lastpage_get = s1.find('li', class_='last').a.attrs['href'].split('?')[-1].split('&')[0].split('=')[-1]
 	num_pages= int(lastpage_get)
 except:
@@ -26,7 +27,7 @@ except:
 
 #The start of the main code:
 for i in range(1,num_pages+1):
-	src = req.get(usr_inp+'?page='+str(i)+'&per-page=50').text
+	src = req.get(usr_inp+'?page='+str(i)+'&per-page=50', headers= headers).text
 	t+=50
 	soup = bs(src, 'lxml')
 
