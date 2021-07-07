@@ -8,7 +8,7 @@ The code only copies the novels and not the info about it.
 How does the code work? Just enter the url and the number of chapters in the light novel and the rest will automatically be done.
 At the end you can specify the path where you want the file to be saved and give it the name you want.
 
-Note: For those who are wondering which app to use to read.. I recommend '[Foliate](https://johnfactotum.github.io/foliate/)' on pc and '[Lithium](https://play.google.com/store/apps/details?id=com.faultexception.reader&hl=en_IN&gl=US)' on android...
+Note: For those who are wondering which app to use to read.. I recommend '[Foliate](https://johnfactotum.github.io/foliate/)' on linux and '[Lithium](https://play.google.com/store/apps/details?id=com.faultexception.reader&hl=en_IN&gl=US)' on android...
 
 Pre-requisites
 You need BeautifulSoup, ebooklib, requests packages. If you don't have you can install them using:
